@@ -1,19 +1,33 @@
-import { Button } from "@/components/ui/button"
+import type { Metadata } from "next"
+import { PromoStrip } from "@/components/home/PromoStrip"
+import { HeroBanner } from "@/components/home/HeroBanner"
+import { FeaturedCategories } from "@/components/home/FeaturedCategories"
+import { TrendingProducts } from "@/components/home/TrendingProducts"
+import { PromoBlock } from "@/components/home/PromoBlock"
+import { BestSellers } from "@/components/home/BestSellers"
+import { Testimonials } from "@/components/home/Testimonials"
+import { NewsletterBanner } from "@/components/home/NewsletterBanner"
 
-export default function Page() {
+export const metadata: Metadata = {
+  title: "Storix — Everything you need. Nothing you don't.",
+  description:
+    "Modern lifestyle & tech accessories store. Premium headphones, wearables, bags, desk setups & more — curated for the modern you.",
+  alternates: {
+    canonical: "/",
+  },
+}
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <>
+      <PromoStrip />
+      <HeroBanner />
+      <FeaturedCategories />
+      <TrendingProducts />
+      <PromoBlock />
+      <BestSellers />
+      <Testimonials />
+      <NewsletterBanner />
+    </>
   )
 }

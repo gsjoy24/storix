@@ -11,6 +11,7 @@ interface RatingProps {
 export function Rating({ value, max = 5, showValue = false, className }: RatingProps) {
   return (
     <div className={cn("flex items-center gap-0.5", className)}>
+      <span className="sr-only">{value} out of {max} stars</span>
       {Array.from({ length: max }).map((_, i) => {
         const filled = value - i
         if (filled >= 1) {

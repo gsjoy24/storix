@@ -1,19 +1,18 @@
 "use client"
 
 import { useCallback } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useAppDispatch, useAppSelector } from "./useRedux"
 import {
   addToWishlist,
   removeFromWishlist,
   toggleWishlist,
   selectWishlistItems,
-  selectIsWishlisted,
 } from "@/store/slices/wishlistSlice"
 import type { Product } from "@/types"
 
 export function useWishlist() {
-  const dispatch = useDispatch()
-  const items = useSelector(selectWishlistItems)
+  const dispatch = useAppDispatch()
+  const items = useAppSelector(selectWishlistItems)
 
   const addItem = useCallback(
     (product: Product) => {
@@ -36,12 +35,8 @@ export function useWishlist() {
     [dispatch],
   )
 
-  const isWishlisted = useCallback(
-    (productId: string) => {
-      return useSelector(selectIsWishlisted(productId))
-    },
-    [],
-  )
+  const isWishlisted = (productId: string) =>
+    items.some((item) => item.id === productId)
 
   return { items, addItem, removeItem, toggle, isWishlisted }
 }

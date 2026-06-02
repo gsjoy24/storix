@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useAppDispatch, useAppSelector } from "./useRedux"
 import {
   addToCart,
   removeFromCart,
@@ -16,11 +16,11 @@ import {
 import type { Product } from "@/types"
 
 export function useCart() {
-  const dispatch = useDispatch()
-  const items = useSelector(selectCartItems)
-  const total = useSelector(selectCartTotal)
-  const count = useSelector(selectCartCount)
-  const isOpen = useSelector(selectIsCartOpen)
+  const dispatch = useAppDispatch()
+  const items = useAppSelector(selectCartItems)
+  const total = useAppSelector(selectCartTotal)
+  const count = useAppSelector(selectCartCount)
+  const isOpen = useAppSelector(selectIsCartOpen)
 
   const addItem = useCallback(
     (product: Product, quantity?: number) => {
