@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -8,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Package, MapPin, ArrowRight, LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { selectIsLoggedIn, selectUser, logout } from "@/store/slices/authSlice"
+import { selectUser, logout } from "@/store/slices/authSlice"
 import { orders } from "@/constants/orders"
 import { toast } from "sonner"
 
@@ -22,16 +21,9 @@ const statusColors: Record<string, string> = {
 export default function AccountPage() {
   const router = useRouter()
   const dispatch = useDispatch()
-  const isLoggedIn = useSelector(selectIsLoggedIn)
   const user = useSelector(selectUser)
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      router.replace("/auth/login")
-    }
-  }, [isLoggedIn, router])
-
-  if (!isLoggedIn || !user) return null
+  if (!user) return null
 
   const handleLogout = () => {
     dispatch(logout())

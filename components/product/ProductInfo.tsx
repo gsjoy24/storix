@@ -68,7 +68,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
       <div>
         <p className="mb-3 text-sm font-medium">Color</p>
         <div className="flex gap-2">
-          {dummyColors.map((color) => (
+          {dummyColors.map((color, i) => (
             <button
               key={color}
               onClick={() => setSelectedColor(color)}

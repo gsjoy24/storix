@@ -1,7 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState } from "react"
 import Link from "next/link"
 import { useSelector } from "react-redux"
 import { ArrowLeft, Save } from "lucide-react"
@@ -9,12 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import { selectIsLoggedIn, selectUser } from "@/store/slices/authSlice"
+import { selectUser } from "@/store/slices/authSlice"
 import { toast } from "sonner"
 
 export default function ProfilePage() {
-  const router = useRouter()
-  const isLoggedIn = useSelector(selectIsLoggedIn)
   const user = useSelector(selectUser)
 
   const [name, setName] = useState(user?.name ?? "")
@@ -24,13 +21,7 @@ export default function ProfilePage() {
   const [country, setCountry] = useState(user?.address.country ?? "")
   const [zip, setZip] = useState(user?.address.zip ?? "")
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      router.replace("/auth/login")
-    }
-  }, [isLoggedIn, router])
-
-  if (!isLoggedIn || !user) return null
+  if (!user) return null
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault()

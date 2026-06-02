@@ -119,6 +119,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --color-brand-surface: oklch(0.23 0.01 95);
 }
 
 @layer base {

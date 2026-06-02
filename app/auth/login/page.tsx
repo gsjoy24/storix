@@ -1,21 +1,30 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { login } from "@/store/slices/authSlice"
+import { login, selectIsLoggedIn } from "@/store/slices/authSlice"
 import { dummyUser } from "@/constants/user"
 import { toast } from "sonner"
 
 export default function LoginPage() {
   const router = useRouter()
   const dispatch = useDispatch()
+  const isLoggedIn = useSelector(selectIsLoggedIn)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.replace("/account")
+    }
+  }, [isLoggedIn, router])
+
+  if (isLoggedIn) return null
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

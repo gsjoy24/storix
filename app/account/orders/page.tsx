@@ -1,9 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { useSelector } from "react-redux"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,7 +9,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { selectIsLoggedIn } from "@/store/slices/authSlice"
 import { orders } from "@/constants/orders"
 
 const statusColors: Record<string, string> = {
@@ -23,17 +19,6 @@ const statusColors: Record<string, string> = {
 }
 
 export default function OrdersPage() {
-  const router = useRouter()
-  const isLoggedIn = useSelector(selectIsLoggedIn)
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      router.replace("/auth/login")
-    }
-  }, [isLoggedIn, router])
-
-  if (!isLoggedIn) return null
-
   return (
     <div className="container mx-auto px-4 py-8">
       <Button asChild variant="ghost" size="sm" className="mb-4">

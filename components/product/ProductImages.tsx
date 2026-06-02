@@ -35,7 +35,7 @@ export function ProductImages({ images, name }: ProductImagesProps) {
               i === active ? "border-brand-primary" : "border-transparent hover:border-muted-foreground/30",
             )}
           >
-             <Image src={img} alt={`${name} thumb ${i + 1}`} fill className="object-cover" sizes="80px" />
+             <Image src={img} alt={`${name} — view ${i + 1}`} fill className="object-cover" sizes="80px" />
           </button>
         ))}
       </div>

@@ -1,7 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { Heart, User } from "lucide-react"
+import { Heart, User, Sun, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 import {
   Sheet,
   SheetContent,
@@ -9,11 +11,20 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { categories } from "@/constants/categories"
 import type { ReactNode } from "react"
 
 export function MobileMenu({ children }: { children: ReactNode }) {
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true)
+  }, [])
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -34,6 +45,35 @@ export function MobileMenu({ children }: { children: ReactNode }) {
               <User className="h-5 w-5" />
               Account
             </Link>
+          </div>
+          <Separator />
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-muted-foreground">Theme</span>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              aria-label={resolvedTheme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            >
+              {mounted ? (
+                resolvedTheme === "dark" ? (
+                  <>
+                    <Sun className="mr-2 h-4 w-4" />
+                    Light
+                  </>
+                ) : (
+                  <>
+                    <Moon className="mr-2 h-4 w-4" />
+                    Dark
+                  </>
+                )
+              ) : (
+                <>
+                  <Moon className="mr-2 h-4 w-4" />
+                  Dark
+                </>
+              )}
+            </Button>
           </div>
           <Separator />
           <div>
