@@ -17,7 +17,7 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <div className="container mx-auto flex min-h-[60vh] flex-col items-center justify-center px-4 py-16 text-center">
-      <AlertTriangle className="h-16 w-16 text-amber-500" />
+      <AlertTriangle className="h-20 w-20 text-amber-500" />
       <h1 className="mt-4 font-heading text-2xl font-bold">Something went wrong</h1>
       <p className="mt-2 text-muted-foreground">
         We encountered an unexpected error. Please try again.

@@ -70,7 +70,6 @@ export function ProductFilters({
                 min={0}
                 max={500}
                 step={10}
-                className="mt-2"
               />
               <div className="flex items-center justify-between text-sm text-muted-foreground">
                 <span>${priceRange[0]}</span>

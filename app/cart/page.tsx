@@ -19,7 +19,7 @@ export default function CartPage() {
           <ShoppingBag className="h-16 w-16 text-muted-foreground/40" />
           <h1 className="font-heading text-2xl font-bold">Your cart is empty</h1>
           <p className="text-muted-foreground">Looks like you haven&apos;t added anything yet.</p>
-          <Button asChild className="mt-4 rounded-full bg-brand-primary text-white hover:bg-brand-primary/90">
+          <Button asChild className="mt-4 rounded-full bg-brand-primary text-white hover:bg-brand-primary/90 px-6">
             <Link href="/shop">Start Shopping</Link>
           </Button>
         </div>

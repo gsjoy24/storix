@@ -26,7 +26,7 @@ export default function CheckoutPage() {
         <div className="flex min-h-[50vh] flex-col items-center justify-center gap-3 text-center">
           <h1 className="font-heading text-2xl font-bold">Nothing to checkout</h1>
           <p className="text-muted-foreground">Add some items to your cart first.</p>
-          <Button asChild className="mt-4 rounded-full bg-brand-primary text-white hover:bg-brand-primary/90">
+          <Button asChild className="rounded-full bg-brand-primary px-6 text-white hover:bg-brand-primary/90">
             <Link href="/shop">Start Shopping</Link>
           </Button>
         </div>
@@ -179,6 +179,7 @@ export default function CheckoutPage() {
               >
                 Place Order
               </Button>
+              <Separator className="my-2" />
               <Button asChild variant="ghost" size="sm" className="w-full">
                 <Link href="/cart" className="flex items-center justify-center gap-1 text-muted-foreground">
                   <ArrowLeft className="h-4 w-4" />

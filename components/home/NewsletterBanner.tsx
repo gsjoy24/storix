@@ -33,6 +33,7 @@ export function NewsletterBanner() {
             />
             <Button
               type="submit"
+              size="lg"
               className="rounded-full bg-brand-accent text-brand-primary hover:bg-brand-accent/90"
             >
               Subscribe

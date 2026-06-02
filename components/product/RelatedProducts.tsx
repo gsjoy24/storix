@@ -16,7 +16,7 @@ export function RelatedProducts({ product }: RelatedProductsProps) {
 
   return (
     <section className="py-16">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <SectionHeading title="You Might Also Like" className="mb-8" />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {related.map((p) => (

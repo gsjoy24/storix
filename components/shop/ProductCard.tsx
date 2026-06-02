@@ -76,7 +76,7 @@ export function ProductCard({ product }: { product: Product }) {
       <p className="text-xs font-medium text-muted-foreground">{product.brand}</p>
       <h3 className="mt-1 text-sm font-medium leading-tight">{product.name}</h3>
       <Rating value={product.rating} className="mt-1" />
-      <div className="mt-2 flex items-center gap-2">
+      <div className="mt-1.5 flex items-center gap-2">
         <span className="text-sm font-bold">${product.price.toFixed(2)}</span>
         {product.originalPrice && (
           <span className="text-sm text-muted-foreground line-through">

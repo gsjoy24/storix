@@ -6,7 +6,7 @@ import { promos } from "@/constants/promos"
 export function HeroBanner() {
   return (
     <section className="relative overflow-hidden bg-brand-surface">
-      <div className="container mx-auto grid min-h-[70vh] items-center gap-8 px-4 py-16 lg:grid-cols-2 lg:py-0">
+      <div className="container mx-auto grid min-h-[70vh] items-center gap-8 px-4 py-16 lg:grid-cols-2 lg:py-12">
         <div className="space-y-6">
           <h1 className="font-heading text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             {promos.hero.headline}

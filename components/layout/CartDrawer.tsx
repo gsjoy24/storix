@@ -31,7 +31,7 @@ export function CartDrawer() {
             <ShoppingBag className="h-16 w-16 text-muted-foreground/40" />
             <p className="text-lg font-medium text-muted-foreground">Your cart is empty</p>
             <p className="text-sm text-muted-foreground/60">Add some items to get started</p>
-            <Button asChild className="mt-4 rounded-full bg-brand-primary text-white hover:bg-brand-primary/90">
+            <Button asChild className="rounded-full bg-brand-primary text-white hover:bg-brand-primary/90">
               <Link href="/shop" onClick={toggleDrawer}>
                 Continue Shopping
               </Link>

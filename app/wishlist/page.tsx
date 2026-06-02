@@ -33,7 +33,7 @@ export default function WishlistPage() {
           <Heart className="h-16 w-16 text-muted-foreground/40" />
           <h1 className="font-heading text-2xl font-bold">Your wishlist is empty</h1>
           <p className="text-muted-foreground">Save items you love for later.</p>
-          <Button asChild className="mt-4 rounded-full bg-brand-primary text-white hover:bg-brand-primary/90">
+          <Button asChild className="mt-4 rounded-full bg-brand-primary text-white hover:bg-brand-primary/90 px-6">
             <Link href="/shop">Discover Products</Link>
           </Button>
         </div>

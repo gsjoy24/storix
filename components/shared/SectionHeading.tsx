@@ -19,7 +19,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={cn("flex items-end justify-between gap-4", className)}>
-      <div className="space-y-1">
+      <div className="space-y-1.5">
         <h2 className="font-heading text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
         {subtitle && <p className="text-muted-foreground">{subtitle}</p>}
       </div>

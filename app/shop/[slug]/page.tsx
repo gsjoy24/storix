@@ -65,7 +65,7 @@ export default async function ProductPage({ params }: Props) {
           <ProductInfo product={product} />
         </div>
 
-        <div className="mt-12">
+        <div className="mt-8 md:mt-12">
           <ProductTabs product={product} reviews={productReviews} />
         </div>
       </div>
