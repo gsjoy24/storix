@@ -2,34 +2,30 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Heart, ShoppingBag } from "lucide-react"
+import { Heart, ShoppingBag, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge as ProductBadge } from "@/components/shared/Badge"
 import { Rating } from "@/components/shared/Rating"
 import { useCart } from "@/hooks/useCart"
 import { useWishlist } from "@/hooks/useWishlist"
-import { toast } from "sonner"
 import type { Product } from "@/types"
 
 export function ProductCard({ product }: { product: Product }) {
-  const { addItem } = useCart()
+  const { addItem, items: cartItems } = useCart()
   const { toggle, items: wishlistItems } = useWishlist()
   const isWishlisted = wishlistItems.some((item) => item.id === product.id)
+  const isInCart = cartItems.some((item) => item.product.id === product.id)
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     addItem(product)
-    toast.success(`Added ${product.name} to cart`)
   }
 
   const handleToggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     toggle(product)
-    toast.success(
-      isWishlisted ? `Removed ${product.name} from wishlist` : `Added ${product.name} to wishlist`,
-    )
   }
 
   return (
@@ -63,14 +59,26 @@ export function ProductCard({ product }: { product: Product }) {
           </Button>
         </div>
         <div className="absolute bottom-3 left-3 right-3 opacity-0 transition-all translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
-          <Button
-            className="w-full rounded-full bg-brand-primary text-white hover:bg-brand-primary/90"
-            size="sm"
-            onClick={handleAddToCart}
-          >
-            <ShoppingBag className="mr-2 h-4 w-4" />
-            Quick Add
-          </Button>
+          {isInCart ? (
+            <Button
+              className="w-full rounded-full"
+              size="sm"
+              variant="secondary"
+              disabled
+            >
+              <Check className="mr-2 h-4 w-4" />
+              In Cart
+            </Button>
+          ) : (
+            <Button
+              className="w-full rounded-full bg-brand-primary text-white hover:bg-brand-primary/90"
+              size="sm"
+              onClick={handleAddToCart}
+            >
+              <ShoppingBag className="mr-2 h-4 w-4" />
+              Quick Add
+            </Button>
+          )}
         </div>
       </div>
       <p className="text-xs font-medium text-muted-foreground">{product.brand}</p>

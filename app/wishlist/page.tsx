@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Breadcrumb } from "@/components/shared/Breadcrumb"
 import { useWishlist } from "@/hooks/useWishlist"
 import { useCart } from "@/hooks/useCart"
-import { toast } from "sonner"
 import type { Product } from "@/types"
 
 export default function WishlistPage() {
@@ -17,12 +16,10 @@ export default function WishlistPage() {
   const handleMoveToCart = (product: Product) => {
     addItem(product)
     removeItem(product.id)
-    toast.success(`Moved ${product.name} to cart`)
   }
 
   const handleRemove = (product: Product) => {
     removeItem(product.id)
-    toast.success(`Removed ${product.name} from wishlist`)
   }
 
   if (items.length === 0) {

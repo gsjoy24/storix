@@ -10,7 +10,7 @@
   --font-mono: var(--font-mono);
   --color-brand-primary: #0f0f0f;
   --color-brand-accent: #e8ff47;
-  --color-brand-surface: #f5f5f0;
+  --color-brand-surface: var(--brand-surface);
   --color-brand-muted: #888888;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -53,6 +53,7 @@
 }
 
 :root {
+  --brand-surface: #f5f5f0;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -88,6 +89,7 @@
 }
 
 .dark {
+  --brand-surface: oklch(0.23 0.01 95);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -119,7 +121,6 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-  --color-brand-surface: oklch(0.23 0.01 95);
 }
 
 @layer base {

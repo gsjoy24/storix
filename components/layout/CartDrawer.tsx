@@ -39,7 +39,7 @@ export function CartDrawer() {
           </div>
         ) : (
           <>
-            <ScrollArea className="flex-1 -mx-6 px-6">
+            <ScrollArea className="flex-1 px-3">
               <div className="space-y-4 py-4">
                 {items.map((item) => (
                   <div key={item.product.id} className="flex gap-4">
@@ -76,8 +76,8 @@ export function CartDrawer() {
               </div>
             </ScrollArea>
 
-            <div className="space-y-4 pt-4">
               <Separator />
+            <div className="space-y-4 pt-2 px-4">
               <div className="flex items-center justify-between">
                 <span className="text-base font-medium">Subtotal</span>
                 <span className="text-base font-bold">${total.toFixed(2)}</span>

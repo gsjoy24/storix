@@ -1,14 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { Heart, ShoppingBag, Truck } from "lucide-react"
+import { Check, Heart, ShoppingBag, Truck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge as ProductBadge } from "@/components/shared/Badge"
 import { Rating } from "@/components/shared/Rating"
 import { QuantitySelector } from "@/components/shared/QuantitySelector"
 import { useCart } from "@/hooks/useCart"
 import { useWishlist } from "@/hooks/useWishlist"
-import { toast } from "sonner"
 import type { Product } from "@/types"
 
 const dummyColors = ["#1a1a1a", "#d4c5b9", "#6b7b8d", "#c44e3f"]
@@ -20,20 +19,17 @@ interface ProductInfoProps {
 export function ProductInfo({ product }: ProductInfoProps) {
   const [quantity, setQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState(dummyColors[0])
-  const { addItem } = useCart()
+  const { addItem, items: cartItems } = useCart()
   const { toggle, items: wishlistItems } = useWishlist()
   const isWishlisted = wishlistItems.some((item) => item.id === product.id)
+  const isInCart = cartItems.some((item) => item.product.id === product.id)
 
   const handleAddToCart = () => {
     addItem(product, quantity)
-    toast.success(`Added ${product.name} to cart`)
   }
 
   const handleToggleWishlist = () => {
     toggle(product)
-    toast.success(
-      isWishlisted ? `Removed from wishlist` : `Added to wishlist`,
-    )
   }
 
   return (
@@ -95,10 +91,19 @@ export function ProductInfo({ product }: ProductInfoProps) {
           size="lg"
           className="flex-1 rounded-full bg-brand-primary text-white hover:bg-brand-primary/90"
           onClick={handleAddToCart}
-          disabled={!product.inStock}
+          disabled={!product.inStock || isInCart}
         >
-          <ShoppingBag className="mr-2 h-5 w-5" />
-          Add to Cart
+          {isInCart ? (
+            <>
+              <Check className="mr-2 h-5 w-5" />
+              In Cart
+            </>
+          ) : (
+            <>
+              <ShoppingBag className="mr-2 h-5 w-5" />
+              Add to Cart
+            </>
+          )}
         </Button>
         <Button
           size="lg"
